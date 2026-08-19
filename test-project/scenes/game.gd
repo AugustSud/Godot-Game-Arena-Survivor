@@ -15,3 +15,8 @@ func _on_player_health_depleted() -> void:
 
 func _on_player_leveled_up(level) -> void:
 	%LevelLabel.text = "Level: " + str(level)
+	$UpgradeScreen.visible = true
+	get_tree().paused = true
+
+func _on_upgrade_1_pressed() -> void:
+	print("caca")

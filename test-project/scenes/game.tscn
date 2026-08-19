@@ -3,12 +3,62 @@
 [ext_resource type="Script" uid="uid://0r8x0xbtxgdh" path="res://scenes/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://chpgds34ss1ln" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bl5xw0dlwfhcp" path="res://scenes/tree.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://ddgacrwtn0rmy" path="res://graphics/UI/speed_symbol.png" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://5o0dkiu5hjny" path="res://graphics/UI/attack_symbol.png" id="5_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bv4ynppnkth5w" path="res://graphics/UI/fire_rate_symbol.png" id="6_u5sy4"]
 
 [sub_resource type="Curve2D" id="Curve2D_yqjtg"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -642, -435, 0, 0, 0, 0, 631, -436, 0, 0, 0, 0, 628, 370, 0, 0, 0, 0, -641, 370, 0, 0, 0, 0, -642, -434)
 }
 point_count = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbhrr"]
+bg_color = Color(0.21960784, 0.7019608, 0.9490196, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.015686275, 0.23529412, 0.3372549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+bg_color = Color(0.018221123, 0.26209152, 0.3753114, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.015686275, 0.23529412, 0.3372549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+bg_color = Color(0.46363455, 0.7930564, 0.9877048, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.015686275, 0.23529412, 0.3372549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0.46363455, 0.7930564, 0.9877048, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.015686275, 0.23529412, 0.3372549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Game" type="Node2D" unique_id=632678099]
 y_sort_enabled = true
@@ -112,6 +162,181 @@ text = "Level: 1"
 
 [node name="Bullets" type="Node2D" parent="." unique_id=183024621]
 
+[node name="UpgradeScreen" type="CanvasLayer" parent="." unique_id=1302105267]
+process_mode = 3
+
+[node name="Control" type="Control" parent="UpgradeScreen" unique_id=857510932]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="UpgradeScreen/Control" unique_id=1276824498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.12604415, 0.3701015, 0.47058824)
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeScreen/Control" unique_id=146320163]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeScreen/Control/CenterContainer" unique_id=672741623]
+layout_mode = 2
+
+[node name="Upgrade_1" type="Button" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer" unique_id=1186748663]
+custom_minimum_size = Vector2(120, 180)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p57ef")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u5sy4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1" unique_id=574598279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1/VBoxContainer" unique_id=201016577]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1/VBoxContainer/MarginContainer" unique_id=885862087]
+custom_minimum_size = Vector2(80, 70)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_lbhrr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1/VBoxContainer" unique_id=893760956]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1/VBoxContainer/MarginContainer2" unique_id=2103405875]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 15
+text = "+5% Movement Speed"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Upgrade_2" type="Button" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer" unique_id=94471449]
+custom_minimum_size = Vector2(120, 180)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iywne")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2" unique_id=1721680823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2/VBoxContainer" unique_id=416391273]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2/VBoxContainer/MarginContainer" unique_id=765279109]
+custom_minimum_size = Vector2(50, 60)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_p57ef")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2/VBoxContainer" unique_id=557630183]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2/VBoxContainer/MarginContainer2" unique_id=1380828812]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 15
+text = "+5% Attack Damage"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Upgrade_3" type="Button" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer" unique_id=1227082996]
+custom_minimum_size = Vector2(120, 180)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iywne")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3" unique_id=2078709508]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3/VBoxContainer" unique_id=2043232491]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3/VBoxContainer/MarginContainer" unique_id=526186764]
+custom_minimum_size = Vector2(80, 70)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_u5sy4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3/VBoxContainer" unique_id=1086349006]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3/VBoxContainer/MarginContainer2" unique_id=1623147239]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 15
+text = "+5% Attack Speed"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1" to="." method="_on_upgrade_1_pressed"]
