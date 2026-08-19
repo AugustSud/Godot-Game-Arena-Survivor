@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dgr2eqftn38ta"]
+
+[ext_resource type="Script" uid="uid://0r8x0xbtxgdh" path="res://scenes/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://chpgds34ss1ln" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bl5xw0dlwfhcp" path="res://scenes/tree.tscn" id="3_lnu2h"]
+
+[sub_resource type="Curve2D" id="Curve2D_yqjtg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -642, -435, 0, 0, 0, 0, 631, -436, 0, 0, 0, 0, 628, 370, 0, 0, 0, 0, -641, 370, 0, 0, 0, 0, -642, -434)
+}
+point_count = 5
+
+[node name="Game" type="Node2D" unique_id=632678099]
+y_sort_enabled = true
+script = ExtResource("1_lnu2h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1855535832]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1321134364]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.58431375, 0.627451, 0.91764706, 1)
+
+[node name="XPContainer" type="Node2D" parent="." unique_id=1045039631]
+
+[node name="Player" parent="." unique_id=699292021 instance=ExtResource("1_uwrxv")]
+position = Vector2(586, 337)
+
+[node name="Path2D" type="Path2D" parent="Player" unique_id=234776753]
+curve = SubResource("Curve2D_yqjtg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=1532969408]
+unique_name_in_owner = true
+position = Vector2(-642, -435)
+rotation = -0.0007855458
+
+[node name="Timer" type="Timer" parent="." unique_id=1185969845]
+autostart = true
+
+[node name="Tree" parent="." unique_id=2107976789 instance=ExtResource("3_lnu2h")]
+position = Vector2(993, 596)
+
+[node name="Tree2" parent="." unique_id=1030711893 instance=ExtResource("3_lnu2h")]
+position = Vector2(1047, 559)
+
+[node name="Tree3" parent="." unique_id=930485287 instance=ExtResource("3_lnu2h")]
+position = Vector2(1048, 622)
+
+[node name="Tree4" parent="." unique_id=1432062608 instance=ExtResource("3_lnu2h")]
+position = Vector2(997, 162)
+
+[node name="Tree5" parent="." unique_id=2119080838 instance=ExtResource("3_lnu2h")]
+position = Vector2(1048, 231)
+
+[node name="Tree6" parent="." unique_id=1164274209 instance=ExtResource("3_lnu2h")]
+position = Vector2(88, 167)
+
+[node name="Tree7" parent="." unique_id=1016856538 instance=ExtResource("3_lnu2h")]
+position = Vector2(107, 587)
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=732060522]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen" unique_id=1832047411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.42352942)
+
+[node name="Label" type="Label" parent="GameOverScreen/ColorRect" unique_id=564610498]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -11.5
+offset_right = 32.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "GIT GUD"
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1795662815]
+
+[node name="LevelLabel" type="Label" parent="HUD" unique_id=2066852575]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -40.0
+offset_right = 70.0
+offset_bottom = -17.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.39607844, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.10421177, 0.31737012, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "Level: 1"
+
+[node name="Bullets" type="Node2D" parent="." unique_id=183024621]
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

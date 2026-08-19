@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://cqnsirgwbmg84"]
+
+[ext_resource type="Texture2D" uid="uid://dk5b8a84a6n2h" path="res://graphics/Default/ground_shadow.png" id="1_16vwg"]
+[ext_resource type="Texture2D" uid="uid://cgn530n8gih5a" path="res://graphics/Default/blue_body_square.png" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://chh1fd8riymsn" path="res://graphics/Default/face_g.png" id="2_qhqgy"]
+
+[sub_resource type="GDScript" id="GDScript_800jt"]
+script/source = "extends Node2D
+
+func play_idle_animation():
+	$AnimationPlayer.play(\"idle\")
+
+func play_walk_animation():
+	$AnimationPlayer.play(\"walk\")
+"
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BlueBodySquare:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BlueBodySquare:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/BlueBodySquare/FaceG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BlueBodySquare:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BlueBodySquare:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/BlueBodySquare/FaceG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BlueBodySquare:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, -30), Vector2(0, 15), Vector2(0, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BlueBodySquare:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8000001),
+"transitions": PackedFloat32Array(1, 0.5, 1, 2, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/BlueBodySquare/FaceG:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8000001),
+"transitions": PackedFloat32Array(1, 0.5, 1, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8), Vector2(0, 0), Vector2(0, 8), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_dqkch"),
+&"idle": SubResource("Animation_qhqgy"),
+&"walk": SubResource("Animation_qlg0r")
+}
+
+[node name="AngryCube" type="Node2D" unique_id=486476894]
+script = SubResource("GDScript_800jt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=801795162]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_tuyoq")
+
+[node name="GroundShadow" type="Sprite2D" parent="." unique_id=1989895850]
+modulate = Color(0.32718724, 0.3731037, 0.83333975, 1)
+position = Vector2(0, -4)
+texture = ExtResource("1_16vwg")
+metadata/_edit_lock_ = true
+
+[node name="Body" type="Node2D" parent="." unique_id=1560772472]
+position = Vector2(0, -30)
+metadata/_edit_group_ = true
+
+[node name="BlueBodySquare" type="Sprite2D" parent="Body" unique_id=1372603500]
+position = Vector2(0, -1)
+texture = ExtResource("1_g2els")
+
+[node name="FaceG" type="Sprite2D" parent="Body/BlueBodySquare" unique_id=618038305]
+position = Vector2(0, 1)
+texture = ExtResource("2_qhqgy")

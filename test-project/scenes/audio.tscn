@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://beaosmghu1ivv"]
+
+[ext_resource type="Script" uid="uid://cqqoagadrkuho" path="res://scenes/audio.gd" id="1_wdljl"]
+[ext_resource type="AudioStream" uid="uid://bd63w22toeaff" path="res://SFX/shoot.mp3" id="2_dl6it"]
+[ext_resource type="AudioStream" uid="uid://dmoe8p4p6w417" path="res://SFX/xp.mp3" id="3_8kkbo"]
+[ext_resource type="AudioStream" uid="uid://rsu1dwhhrhjm" path="res://SFX/game_over.mp3" id="4_3g2y6"]
+[ext_resource type="AudioStream" uid="uid://dvxv0633v7dfv" path="res://SFX/level_up.mp3" id="5_lpqkh"]
+
+[node name="Audio" type="Node2D" unique_id=770642209]
+process_mode = 3
+script = ExtResource("1_wdljl")
+
+[node name="shoot_sfx" type="AudioStreamPlayer" parent="." unique_id=1417553553]
+stream = ExtResource("2_dl6it")
+volume_db = -28.281
+pitch_scale = 0.5
+
+[node name="xp_sfx" type="AudioStreamPlayer" parent="." unique_id=1753124309]
+stream = ExtResource("3_8kkbo")
+volume_db = -14.596
+
+[node name="game_over_sfx" type="AudioStreamPlayer" parent="." unique_id=2088791050]
+stream = ExtResource("4_3g2y6")
+
+[node name="level_up_sfx" type="AudioStreamPlayer" parent="." unique_id=1201353257]
+stream = ExtResource("5_lpqkh")
+volume_db = -10.947

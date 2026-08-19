@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b4qj3165ruoje"]
+
+[ext_resource type="Script" uid="uid://bqxu1iriijlho" path="res://scenes/gun.gd" id="1_og67c"]
+[ext_resource type="Texture2D" uid="uid://b6ueo0wnn0rbu" path="res://graphics/Default/blue_hand_point.png" id="1_x77fm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og67c"]
+radius = 402.31827
+
+[node name="Gun" type="Area2D" unique_id=1919669844]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_og67c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=69439844]
+rotation = 0.24583192
+shape = SubResource("CircleShape2D_og67c")
+
+[node name="WeaponPivot" type="Marker2D" parent="." unique_id=1297630858]
+
+[node name="Hand" type="Sprite2D" parent="WeaponPivot" unique_id=596042176]
+position = Vector2(95, -48.999996)
+rotation = 0.6253885
+scale = Vector2(1.1592071, 1.1592073)
+texture = ExtResource("1_x77fm")
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Hand" unique_id=1691188230]
+unique_name_in_owner = true
+position = Vector2(16.358425, -17.132236)
+
+[node name="Timer" type="Timer" parent="." unique_id=1677509695]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

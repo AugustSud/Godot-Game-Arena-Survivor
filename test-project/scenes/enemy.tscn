@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://di6hpgq8i3x54"]
+
+[ext_resource type="PackedScene" uid="uid://f5qk1egsr0cy" path="res://scenes/mob.tscn" id="1_7k104"]
+[ext_resource type="Script" uid="uid://egskx7aj2exu" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 44.04543
+
+[node name="Enemy" type="CharacterBody2D" unique_id=312951838]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_md0e3")
+
+[node name="Mob" parent="." unique_id=227421298 instance=ExtResource("1_7k104")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=311902966]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_4gyqm")

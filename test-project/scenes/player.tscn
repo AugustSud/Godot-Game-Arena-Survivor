@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://chpgds34ss1ln"]
+
+[ext_resource type="PackedScene" uid="uid://cqnsirgwbmg84" path="res://scenes/AngryCube.tscn" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://d0ofir4sfcodk" path="res://scenes/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://b4qj3165ruoje" path="res://scenes/gun.tscn" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(78, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(86, 88)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhqgy"]
+bg_color = Color(0.23753911, 0.23753914, 0.23753902, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
+bg_color = Color(0.5647059, 0.8980392, 0.25882354, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuyoq"]
+bg_color = Color(0.30980393, 0.77254903, 0.99607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Player" type="CharacterBody2D" unique_id=699292021]
+collision_layer = 2
+script = ExtResource("1_qhqgy")
+
+[node name="AngryCube" parent="." unique_id=486476894 instance=ExtResource("1_3vyb7")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=418623744]
+position = Vector2(0, -13.5)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1786626589]
+
+[node name="Gun" parent="." unique_id=1919669844 instance=ExtResource("3_qhqgy")]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=663439491]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=389713850]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_qhqgy")
+debug_color = Color(0.99095505, 0, 0.27767783, 0.41960785)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1647543097]
+unique_name_in_owner = true
+offset_left = -66.0
+offset_top = -118.0
+offset_right = 70.0
+offset_bottom = -101.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qhqgy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dqkch")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="XPBar" type="ProgressBar" parent="." unique_id=783668534]
+unique_name_in_owner = true
+offset_left = -66.0
+offset_top = -137.0
+offset_right = 70.0
+offset_bottom = -121.205
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/outline_size = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_qlg0r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tuyoq")
+max_value = 10.0
+show_percentage = false
+
+[node name="LevelUpMessage" type="Label" parent="." unique_id=126988830]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -166.0
+offset_right = 38.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 25
+text = "LEVEL UP!"
+horizontal_alignment = 1
+vertical_alignment = 1
