@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var player = $Player
+
 func spawn_mob():
 	var new_mob = preload("res://scenes/enemy.tscn").instantiate()
 	%PathFollow2D.progress_ratio = randf()
@@ -19,4 +21,18 @@ func _on_player_leveled_up(level) -> void:
 	get_tree().paused = true
 
 func _on_upgrade_1_pressed() -> void:
-	print("caca")
+	player.upgrade_move_speed()
+	close_upgrade_screen()
+	
+func _on_upgrade_2_pressed() -> void:
+	player.upgrade_damage()
+	close_upgrade_screen()
+
+func _on_upgrade_3_pressed() -> void:
+	player.upgrade_bullet_speed()
+	close_upgrade_screen()
+
+func close_upgrade_screen() -> void:
+	$UpgradeScreen.visible = false
+	get_tree().paused = false
+	

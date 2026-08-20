@@ -1,5 +1,9 @@
 extends Area2D
 
+var damage := 1
+var bullet_speed := 1000
+
+
 @onready var bullets_container = get_node("/root/Game/Bullets")
 
 var target_enemy:Node2D = null
@@ -17,6 +21,8 @@ func shoot():
 		return
 	const BULLET = preload("res://scenes/bullet.tscn")
 	var new_bullet = BULLET.instantiate()
+	new_bullet.damage = damage
+	new_bullet.speed = bullet_speed
 	Audio.shoot_sfx()
 	bullets_container.add_child(new_bullet)
 	new_bullet.global_position = %ShootingPoint.global_position

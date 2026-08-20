@@ -48,8 +48,32 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gee14"]
+bg_color = Color(0.019607844, 0.2627451, 0.3764706, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.015686275, 0.23529412, 0.3372549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.46363455, 0.7930564, 0.9877048, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.015686275, 0.23529412, 0.3372549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+bg_color = Color(0.019607844, 0.2627451, 0.3764706, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -164,6 +188,7 @@ text = "Level: 1"
 
 [node name="UpgradeScreen" type="CanvasLayer" parent="." unique_id=1302105267]
 process_mode = 3
+visible = false
 
 [node name="Control" type="Control" parent="UpgradeScreen" unique_id=857510932]
 layout_mode = 3
@@ -245,6 +270,7 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(120, 180)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gee14")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iywne")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2" unique_id=1721680823]
@@ -293,6 +319,7 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(120, 180)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_lbhrr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0tnpc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iywne")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3" unique_id=2078709508]
@@ -340,3 +367,5 @@ autowrap_mode = 2
 [connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_1" to="." method="_on_upgrade_1_pressed"]
+[connection signal="pressed" from="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_2" to="." method="_on_upgrade_2_pressed"]
+[connection signal="pressed" from="UpgradeScreen/Control/CenterContainer/HBoxContainer/Upgrade_3" to="." method="_on_upgrade_3_pressed"]

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var gun = $Gun
+
 signal health_depleted
 signal leveled_up
 
@@ -53,3 +55,12 @@ func animated_text():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(message, "modulate:a", 0, 1)
+
+func upgrade_move_speed():
+	speed *= 1.05
+	
+func upgrade_damage():
+	gun.damage += 1
+	
+func upgrade_bullet_speed():
+	gun.bullet_speed *= 1.1

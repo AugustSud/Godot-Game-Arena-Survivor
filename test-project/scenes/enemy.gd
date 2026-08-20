@@ -14,8 +14,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction * 200
 		move_and_slide()
 
-func take_damage():
-	health -= 1
+func take_damage(dmg_amount):
+	health -= dmg_amount
 	%Mob.play_hurt_animation()
 	
 	if health <= 0:
